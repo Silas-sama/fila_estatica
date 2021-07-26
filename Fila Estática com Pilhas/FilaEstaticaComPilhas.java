@@ -27,6 +27,7 @@ public class FilaEstaticaComPilhas implements Enfileiravel {
 				p2.empilhar(p1.desempilhar());
 			}
 			elementoInicio = p2.desempilhar();
+			
 			while (!p2.estaVazia()) {
 				p1.empilhar(p2.desempilhar());
 			}			
@@ -43,6 +44,7 @@ public class FilaEstaticaComPilhas implements Enfileiravel {
 				p2.empilhar(p1.desempilhar());
 			}
 			elementoInicio = p2.topo();
+			
 			while (!p2.estaVazia()) {
 				p1.empilhar(p2.desempilhar());
 			}
@@ -61,17 +63,17 @@ public class FilaEstaticaComPilhas implements Enfileiravel {
 	}
 	
 	public String imprimir(){
-		String resultado = "[";
+		String resultado = "";
 		
-		while (p1.estaVazia()) {
+		while (!p1.estaVazia()) {
 			p2.empilhar(p1.desempilhar());
 		}
 		
-		while (p2.estaVazia()) {
-			Object elementoAuxiliar = p2.desempilhar();
-			p1.empilhar(elementoAuxiliar);
-			resultado += elementoAuxiliar;
+		resultado = p2.imprimir();
+		
+		while (!p2.estaVazia()) {
+			p1.empilhar(p2.desempilhar());		
 		}
-		return resultado + "]";		
+		return resultado;		
 	}
 }
